@@ -1,0 +1,137 @@
+<head>
+  <title>My Book</title>
+</head>
+
+<body>
+  {{> main}}
+</body>
+
+<template name="main">
+	<hr>
+	<h2>
+		Posts List:
+  	</h2>
+  	<hr>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-4 column">
+			<img alt="140x140" src="http://lorempixel.com/140/140/">
+		</div>
+		<div class="col-md-4 column">
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#">Home</a>
+				</li>
+				<li>
+					<a href="#">Profile</a>
+				</li>
+				<li class="disabled">
+					<a href="#">Messages</a>
+				</li>
+				<li class="dropdown pull-right">
+					 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown<strong class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">Action</a>
+						</li>
+						<li>
+							<a href="#">Another action</a>
+						</li>
+						<li>
+							<a href="#">Something else here</a>
+						</li>
+						<li class="divider">
+						</li>
+						<li>
+							<a href="#">Separated link</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-4 column">
+			<h2>
+				13:50
+			</h2>
+
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-9 column">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							Name
+						</th>
+						<th>
+							Message
+						</th>
+						<th>
+							DeadLine
+						</th>
+						<th>
+                            Done
+						</th>
+					</tr>
+				</thead>
+				<tbody>    
+  	{{#each posts}}
+                    
+                    <tr class="warning">
+						<td>
+							{{name}}
+						</td>
+						<td>
+							{{text}}
+						</td>
+						<td>
+							{{deadline}}
+						</td>
+						<td>
+							{{done}}
+						</td>
+					</tr>
+  	{{/each}}
+				</tbody>
+			</table>
+		</div>
+        
+        <!--this is food list-->
+		<div class="col-md-3 column">
+            
+            
+            
+            <form role="form" id="foodlist">
+                <input type="text">
+                <button type="submit" >submit</button>
+                
+              
+            
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th class="col-md-8">
+							Item
+						</th>
+						<th class="col-md-4">
+							:
+						</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+                        <td>Item</td>
+                        <td>Date</td>
+                    </tr>
+				</tbody>
+			</table>
+                <input type="text" id="foodName"><button>+</button> <button>-</button><br>
+                <input type="text" id="expireDate"><button>:</button>
+                </form>
+		</div>
+	</div>
+</div>
+
+</template>
