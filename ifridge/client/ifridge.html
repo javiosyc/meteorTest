@@ -1,173 +1,22 @@
 <head>
-  <title>My Book</title>
+    <title>Ifridge</title>
 </head>
 
 <body>
-  <div class="container">
-    {{> head}}
-      <div class="container">
-          <div class="row clearfix">
-              {{> navbar}}
-          </div>
-      </div>
     <div class="container">
-        <div class="row clearfix">
-          {{> message}}  
-          {{> foodList}}
+        {{> head}}
+        <div class="container mycss">
+            <div class="row clearfix">
+                {{> navbar}}
+            </div>
+        </div>
+        <div class="container">
+            <div class="row clearfix">
+                {{> message}} {{> foodList}}
+            </div>
         </div>
     </div>
-  </div>
 </body>
 <template name="head">
-    
-</template>
 
-<template name="navbar">
-    <div class="col-md-2 column">
-			<img alt="140x140" src="http://lorempixel.com/140/140/">
-	</div>
-    <div class="col-md-7 column">
-		<ul class="nav nav-tabs">
-			<li class="active">
-				<a href="#">Home</a>
-			</li>
-			<li>
-				<a href="#">Profile</a>
-			</li>
-			<li class="disabled">
-				<a href="#">Messages</a>
-			</li>
-			<li class="dropdown pull-right">
-				<a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown<strong class="caret"></strong></a>
-                <ul class="dropdown-menu">
-			        <li>
-						<a href="#">Action</a>
-					</li>
-					<li>
-						<a href="#">Another action</a>
-					</li>
-					<li>
-						<a href="#">Something else here</a>
-					</li>
-					<li class="divider"></li>
-					<li>
-						<a href="#">Separated link</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-    <div class="col-md-3 column">
-         <h2><label id="time">13:50</label></h2>
-	</div>
-</template>
-
-
-<template name="foodList">
-    <div class="col-md-3 column">
-        <form id="foodFliter">
-            <input type="text">
-            <button type="submit" >search</button>
-        </form>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th class="col-md-8">Food Name</th>
-				    <th class="col-md-4">.</th>
-				</tr>
-			</thead>
-			<tbody>
-                {{#each foods}}
-                <tr>
-                    <td>{{foodName}}</td>
-                    <td>{{expirationDate}}</td>
-                </tr>
-                {{/each}}
-			</tbody>
-		</table>    
-        <form role="form" id="foodListForm">
-            <div class="form-group">
-                <div class="col-md-5">
-                    <label for="deadline">Food Name</label>  
-                </div>
-                <div class="col-md-7">
-                    <input type="text" id="foodName" class="form-control">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-5">
-                    <label for="expirationDate">EXP. </label>
-                </div>
-                <div class="col-md-7">
-                    <input type="text" class="form-control" id="expirationDate">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="btn-group">
-                    <button class="btn btn-default" type="sumbit"> <span class="glyphicon glyphicon-plus"></span></button>
-                    <button class="btn btn-default" type="button"> <span class="glyphicon glyphicon-minus"></span></button>
-                </div>
-            </div>
-        </form>
-    </div>
-</template>
-      
-<template name="message">
-    <div class="col-md-9 column">
-	<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>
-							Name
-						</th>
-						<th>
-							Message
-						</th>
-						<th>
-							DeadLine
-						</th>
-						<th>
-                            Done
-						</th>
-					</tr>
-				</thead>
-				<tbody>    
-  	{{#each posts}}
-                    
-                    <tr class="{{messageColor}}">
-						<td>
-							{{name}}
-						</td>
-						<td>
-                            <abbr title="{{text}}">
-                                {{messageFormate text}}
-                            </abbr>
-						</td>
-						<td>
-							{{deadline}}
-						</td>
-						<td>
-							{{done}}
-						</td>
-					</tr>
-  	{{/each}}
-				</tbody>
-			</table>
-	
-    <form role="form" id="messageForm">
-        <div class="form-group">
-            <label for="name">Name</label><input type="text" class="form-control" id="name" placeholder="NAME">
-        </div>
-        <div class="form-group">
-            <label for="text">Message</label><input type="text" class="form-control" id="text" placeholder="Message">
-        </div>
-        <div class="form-group">
-            <label for="deadline">DeadLine</label><input type="text" class="form-control" id="deadline" placeholder="YYYYMMDD">
-        </div>
-        <div class="form-group">
-            <label for="done">Done</label><input type="text" class="form-control" id="done" placeholder="Y or N">
-        </div>
-        <button type="submit"  value="Create" class="btn btn-default">Submit</button>
-    </form>
-    </div>	
 </template>

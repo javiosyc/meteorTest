@@ -5,7 +5,8 @@
   "commands": {
         "Start ifridge": "cd ifridge;mrt" ,
       	"Go to mongo": "cd ifridge; mrt mongo",
-        "install meteor and meteorite" : "parts install meteor ; npm install -g meteorite"
+        "install meteor and meteorite" : "parts install meteor ; npm install -g meteorite",
+        "deploy": "cd ifridge;mrt deploy javio-ifridge.meteor.com"
   },
 
 // Preview button configuration
@@ -13,6 +14,7 @@
         "Project Index (static)": "https://{{domain}}/{{index}}",
         "Current File (static)": "https://{{domain}}/{{filepath}}",
         "Box URL": "http://{{domain}}:3000/",
-        "Box URL SSL": "https://{{domain}}:9500/"
+        "Box URL SSL": "https://{{domain}}:9500/",
+      	"Deploy URL" : "http://javio-ifridge.meteor.com/"
   }
 }

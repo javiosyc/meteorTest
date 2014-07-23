@@ -1,0 +1,81 @@
+<template name="message">
+    <div class="col-md-9 column">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Message
+                    </th>
+                    <th>
+                        DeadLine
+                    </th>
+                    <th>
+                        Done
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each posts}}
+
+                <tr class="{{messageColor}}">
+                    <td>
+                        {{name}}
+                    </td>
+                    <td>
+                        <abbr title="{{text}}">
+                                {{messageFormate text}}
+                            </abbr>
+                    </td>
+                    <td>
+                        {{deadline}}
+                    </td>
+                    <td>
+                        {{done}}
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <!-- Button trigger modal -->
+        <button id="messageModalbutton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+            Add New Message
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">New Message</h4>
+                    </div>
+                    <form role="form" id="messageForm">
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="NAME">
+                            </div>
+                            <div class="form-group">
+                                <label for="text">Message</label>
+                                <input type="text" class="form-control" id="text" placeholder="Message">
+                            </div>
+                            <div class="form-group">
+                                <label for="deadline">DeadLine</label>
+                                <input type="text" class="form-control" id="deadline" placeholder="YYYYMMDD">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                            <button type="submit" value="Create" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

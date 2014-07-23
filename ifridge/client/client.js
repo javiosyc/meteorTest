@@ -4,11 +4,8 @@ if(Meteor.isClient) {
     Template.message.helpers({
         "posts": Posts.find()
     });
-    Template.foodList.helpers({
-        "foods": Foods.find()
-    });
     Template.message.events({
-        "submit #messageForm": insertMessage,
+        "submit #messageForm": insertMessage
     });
     Template.message.messageFormate = function(message) {
         return message.substring(0, 30);
@@ -28,9 +25,19 @@ if(Meteor.isClient) {
                 return "primary";
         }
     };
+    
     Template.foodList.events({
-        "submit #foodListForm": insertFoodList
-    })
+        "click #submitFoodButton": insertFoodList,
+        "click #addFoodButton": showFoodForm,
+        "click #test": searchFood
+    });
+    Template.foodList.helpers({
+        "foods": Foods.find()
+    });
+    Template.foodList.new_food = function() {
+        return Session.equals('addFood', true);
+    }
+    Session.set("addFood", false);
     timer();
 }
 
@@ -40,22 +47,23 @@ function insertMessage(e) {
         "name": $(e.target).find("[id=name]").val(),
         "text": $(e.target).find("[id=text]").val(),
         "deadline": $(e.target).find("[id=deadline]").val(),
-        "done": $(e.target).find("[id=done]").val()
+        "done": "N"
     };
     post._id = Posts.insert(post);
     $(e.target).find("[id=name]").val("");
     $(e.target).find("[id=text]").val("");
     $(e.target).find("[id=deadline]").val("");
-    $(e.target).find("[id=done]").val("");
 }
 
-function insertFoodList(e) {
+function insertFoodList(e,template) {
     e.preventDefault();
     var post = {
-        "foodName": $(e.target).find("[id=foodName]").val(),
-        "expirationDate": $(e.target).find("[id=expirationDate]").val()
+        "foodName": template.find("#foodName").value,
+        "expirationDate": template.find("#expirationDate").value
     };
+    console.log(post);
     post._id = Foods.insert(post);
+    Session.set('addFood', false);
     $(e.target).find("[id=foodName]").val("");
     $(e.target).find("[id=expirationDate]").val("");
 }
@@ -65,6 +73,29 @@ function timer() {
 }
 
 function setTime() {
-    var time = new Date().toLocaleString() + ' 星期' + '日一二三四五六'.charAt(new Date().getDay());
+    var time = new Date();
     $("#time").html(time);
 }
+
+function showFoodForm(event, template) {
+    Session.set("addFood", true);
+    Meteor.flush();
+    focusText(template.find("#foodName"));
+}
+
+function searchFood() {
+    console.log("do search foods by criteria" );
+    
+    var foodList = Foods.find(
+        {"name":"臭豆腐"}
+         );
+    
+    Template.foodList.helpers({
+        "foods": Foods.find(
+        {"name":"臭豆腐"})
+    });
+}
+function focusText(i) {
+    i.focus();
+    i.select();
+};
