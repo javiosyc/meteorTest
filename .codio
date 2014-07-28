@@ -3,7 +3,7 @@
 
 // Run button configuration
   "commands": {
-        "Start ifridge": "cd ifridge;mrt" ,
+        "Start ifridge": "cd ifridge;mrt",
       	"Go to mongo": "cd ifridge; mrt mongo",
         "install meteor and meteorite" : "parts install meteor ; npm install -g meteorite",
         "deploy": "cd ifridge;mrt deploy javio-ifridge.meteor.com"

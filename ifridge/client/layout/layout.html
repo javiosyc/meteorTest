@@ -1,0 +1,15 @@
+<template name="layout">
+    <div class="container">
+        <div class="container mycss">
+            <div class="row clearfix">
+                {{>navigation}}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row clearfix">
+                {{>yield}}
+                {{>foodList}}
+        </div>
+    </div>
+</template>

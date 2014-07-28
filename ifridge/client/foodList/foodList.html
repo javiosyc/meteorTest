@@ -1,8 +1,7 @@
 <template name="foodList">
-    <div class="col-md-3 column">
         <div>
-            <input id="food" type="text">
-            <button id="test">
+            <input id="searchFood" type="text">
+            <button id="searchFoodButton">
                 <span class="glyphicon glyphicon-search"></span>
             </button>
         </div>
@@ -14,10 +13,10 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each foods}}
-                <tr>
+                {{#each FoodList}}
+                <tr class="{{color}}">
                     <td>{{foodName}}</td>
-                    <td>{{expirationDate}}</td>
+                    <td>{{expirationDate}}<button class="close delete_item" type="button" id="{{_id}}"><span class="glyphicon glyphicon-thumbs-down"></span></button></td> 
                 </tr>
                 {{/each}}
             </tbody>
@@ -45,9 +44,6 @@
                     <button class="btn btn-default" id="submitFoodButton">
                         <span class="glyphicon glyphicon-save"></span>
                     </button>
-                    <!--<button class="btn btn-default" type="button">
-                    <span class="glyphicon glyphicon-minus"></span>
-                </button>-->
                 </div>
             </div>
         </form>
@@ -57,11 +53,7 @@
                 <button class="btn btn-default" type="button" id="addFoodButton">
                     <span class="glyphicon glyphicon-plus"></span>
                 </button>
-                <!--<button class="btn btn-default" type="button">
-                    <span class="glyphicon glyphicon-minus"></span>
-                </button>-->
             </div>
         </div>
         {{/if}}
-    </div>
 </template>

@@ -84,3 +84,23 @@ db.collectionName.find( {author :”test"});
 
 
 db.users.find({"name": /.*m.*/})
+
+
+
+
+----------------
+Foods.find({foodName:{$regex:criteria}});
+
+
+------------------------------
+http://subtlepatterns.com/hixs-evolution/
+
+--------------------------
+pull-right 
+lable
+<div class="lendee pull-right label {{LendClass}}">
+				{{Lendee}}</div>
+		
+        
+-------------------------
+meteor remove autopublish
