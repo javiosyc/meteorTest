@@ -8,5 +8,5 @@ Router.configure(
 Router.map(function(){
     this.route('message',{path:'/'});
     this.route('about',{path:'/about'});
-    this.route('builder',{path:'/builder'});
+    this.route('setting',{path:'/setting'});
 })

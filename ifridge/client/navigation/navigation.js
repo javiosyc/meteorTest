@@ -1,7 +1,8 @@
-timer();
-
 function timer() {
-    setInterval(setTime, 60 * 1000);
+    console.log(setTime);
+    console.log(typeof(setTime));
+    //Meteor.setInterval(setTime, 5 * 1000)
+    setInterval(setTime, 5 * 1000);
 }
 
 function setTime() {
@@ -9,3 +10,4 @@ function setTime() {
     console(time.toString());
     $("#time").html(time);
 }
+

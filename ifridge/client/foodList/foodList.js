@@ -1,17 +1,11 @@
+Foods = new Meteor.Collection("foodLists");
 Template.foodList.events({
     "click #submitFoodButton": insertFoodList,
     "click #addFoodButton": showFoodForm,
-    "click #searchFoodButton": function(event, template) {
-        console.log(event);
-        var foodName = template.find("#searchFood").value;
-        if(foodName != "") {
-            Session.set("criteria", foodName);
-        } else {
-            Session.set("criteria", undefined);
-        }
-    }
+    "click #searchFoodButton": searchFoodByCriteria,
+    "click .delete_item": deleteFood
 });
-/*
+Session.set("addFood", false);
 Template.foodList.new_food = function() {
     return Session.equals('addFood', true);
 }
@@ -82,4 +76,20 @@ function focusText(i) {
     i.focus();
     i.select();
 };
-*/
+
+function deleteFood(event, template) {
+    console.log(event.target.id);
+    Foods.remove(event.target.id);
+}
+
+
+
+function searchFoodByCriteria(event, template) {
+        console.log(event);
+        var foodName = template.find("#searchFood").value;
+        if(foodName != "") {
+            Session.set("criteria", foodName);
+        } else {
+            Session.set("criteria", undefined);
+        }
+    }

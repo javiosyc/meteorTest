@@ -9,21 +9,23 @@ var samplePostsData = [{
     "name": "Richard",
     "text": "Meteor is great!",
     "deadline": "20140719",
-    "done": "N"
+    "done": "N",
+    "createDate": new Date(2014, 6, 31).getTime()
 }, {
     "name": "Richard",
     "text": "Meteor is so nice!",
     "deadline": "20140719",
-    "done": "N"
+    "done": "N",
+    "createDate": new Date(2014, 6, 30).getTime()
 }, {
     "name": "Richard",
     "text": "Meteor is the best!",
     "deadline": "20140719",
-    "done": "N"
-}, ];
-
-    var Posts = new Meteor.Collection("myBookPosts");
-    var Foods = new Meteor.Collection("foodLists");
+    "done": "N",
+    "createDate": new Date(2014, 6, 29).getTime()
+} ];
+var Posts = new Meteor.Collection("myBookPosts");
+var Foods = new Meteor.Collection("foodLists");
 console.log("count = " + Posts.find().count());
 if(Posts.find().count() == 0) {
     Posts.insert(samplePostsData[0]);

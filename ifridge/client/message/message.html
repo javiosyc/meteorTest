@@ -4,11 +4,15 @@
             <thead>
                 <tr>
                     <th>
+                        Create Time
+                    </th>
+                    <th>
                         Name
                     </th>
                     <th>
                         Message
                     </th>
+
                     <th>
                         DeadLine
                     </th>
@@ -21,12 +25,15 @@
                 {{#each posts}}
                 <tr class="mycolor">
                     <td>
+                        {{timeFormate createDate}}
+                    </td>
+                    <td>
                         {{name}}
                     </td>
                     <td>
                         <abbr title="{{text}}">
-                                {{messageFormate text}}
-                            </abbr>
+                            {{messageFormate text}}
+                        </abbr>
                     </td>
                     <td>
                         {{deadline}}

@@ -92,6 +92,8 @@ db.users.find({"name": /.*m.*/})
 Foods.find({foodName:{$regex:criteria}});
 
 
+Foods.find({}, {sort: {date_created: -1}});
+
 ------------------------------
 http://subtlepatterns.com/hixs-evolution/
 

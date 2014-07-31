@@ -1,10 +1,10 @@
 <template name="foodList">
-        <div>
-            <input id="searchFood" type="text">
-            <button id="searchFoodButton">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-        </div>
+    <div class="col-md-3 column">
+        <input id="searchFood" type="text">
+        <button id="searchFoodButton">
+            <span class="glyphicon glyphicon-search"></span>
+        </button>
+
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -16,7 +16,10 @@
                 {{#each FoodList}}
                 <tr class="{{color}}">
                     <td>{{foodName}}</td>
-                    <td>{{expirationDate}}<button class="close delete_item" type="button" id="{{_id}}"><span class="glyphicon glyphicon-thumbs-down"></span></button></td> 
+                    <td>{{expirationDate}}
+                        <button class="close delete_item" type="button"><span id="{{_id}}" class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </td>
                 </tr>
                 {{/each}}
             </tbody>
@@ -56,4 +59,5 @@
             </div>
         </div>
         {{/if}}
+    </div>
 </template>
