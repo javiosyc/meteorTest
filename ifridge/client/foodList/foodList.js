@@ -1,4 +1,7 @@
-Foods = new Meteor.Collection("foodLists");
+Meteor.autorun(function() {
+    Meteor.subscribe("foodLists");  																					
+});
+
 Template.foodList.events({
     "click #submitFoodButton": insertFoodList,
     "click #addFoodButton": showFoodForm,
@@ -11,13 +14,18 @@ Template.foodList.new_food = function() {
 }
 Template.foodList.FoodList = searchFood;
 
+Template.foodList.colorText = function(color) {
+    if(color =='danger') {
+        return "過期";
+    }
+}
+
 function insertFoodList(e, template) {
     e.preventDefault();
     var post = {
         "foodName": template.find("#foodName").value,
         "expirationDate": template.find("#expirationDate").value
     };
-    console.log(post);
     post._id = Foods.insert(post);
     Session.set('addFood', false);
     $(e.target).find("[id=foodName]").val("");
@@ -33,7 +41,7 @@ function isWarning(date) {
     var day = now.getDate();
     if(month > date.substr(0, 2)) {
         return "danger";
-    } else if(month == date.substr(0, 2)) {
+    } else if(month == date.substr(0, 2)) {																		
         if(day >= date.substr(2, 4)) {
             return "danger";
         } else {
@@ -61,6 +69,8 @@ function searchFood() {
     console.log("criteria=" + Session.get("criteria"));
     if(Session.equals("criteria", undefined)) {
         var foods = Foods.find().fetch();
+        
+        console.log(foods.length);
         return setFoodWarningColor(foods);
     } else {
         var criteria = Session.get("criteria");
@@ -78,11 +88,8 @@ function focusText(i) {
 };
 
 function deleteFood(event, template) {
-    console.log(event.target.id);
-    Foods.remove(event.target.id);
+    Foods.remove(this._id);
 }
-
-
 
 function searchFoodByCriteria(event, template) {
         console.log(event);

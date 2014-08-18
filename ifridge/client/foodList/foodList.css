@@ -1,0 +1,10 @@
+.foodList {
+    border : 2px solid black;
+    margin-left: 30px;
+    height:400px;
+}
+
+.searchFood {
+    float:right;
+    margin-top:5px;
+}

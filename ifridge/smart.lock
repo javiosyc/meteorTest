@@ -2,19 +2,31 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
+      "iron-router": {},
       "bootstrap-3": {},
-      "iron-router": {}
+      "bootstrap-datepicker2": {},
+      "bootstrap-3-switch": {}
     },
     "packages": {
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.8.2",
+        "commit": "05415a8891ea87a00fb1e2388585f2ca5a38e0da"
+      },
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
         "tag": "v3.2.0-1",
         "commit": "17a63902fc6cf1096c5289d963c66cf28b474727"
       },
-      "iron-router": {
-        "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.8.1",
-        "commit": "74e867557fd9cb81173e048e5f81cf4a0a1160a8"
+      "bootstrap-datepicker2": {
+        "git": "https://github.com/deepwell/meteor-bootstrap-datepicker.git",
+        "tag": "v1.2.0",
+        "commit": "b7de18a7cc651ea665cda75048663f90d1a11d10"
+      },
+      "bootstrap-3-switch": {
+        "git": "https://github.com/joshorig/meteor-bootstrap-3-switch.git",
+        "tag": "v0.0.3",
+        "commit": "0d2f24b5ae2857d41eb945b5c2cec1c31a02d0d6"
       },
       "iron-layout": {
         "git": "https://github.com/EventedMind/iron-layout.git",

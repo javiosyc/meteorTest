@@ -1,23 +1,19 @@
 <template name="message">
-    <div class="col-md-9 column">
+    <div class="col-md-8 column message">
         <table class="table">
             <thead>
                 <tr>
                     <th>
-                        Create Time
+                        MEMBER
                     </th>
                     <th>
-                        Name
+                        TOPIC
                     </th>
                     <th>
-                        Message
-                    </th>
-
-                    <th>
-                        DeadLine
+                        DEADLINE
                     </th>
                     <th>
-                        Done
+                        DONE
                     </th>
                 </tr>
             </thead>
@@ -25,34 +21,47 @@
                 {{#each posts}}
                 <tr class="mycolor">
                     <td>
-                        {{timeFormate createDate}}
-                    </td>
-                    <td>
                         {{name}}
+                        <label class="label label-info">{{isNew createDate}}</label>
                     </td>
                     <td>
-                        <abbr title="{{text}}">
-                            {{messageFormate text}}
+                        <div style="float:right;color:#B3B3B6"> <small>{{timeFormate createDate}}</small>
+                        </div>
+                        <div>
+                            <abbr title="{{text}}">
+                            {{messageFormate text}}  
                         </abbr>
+                        </div>
                     </td>
                     <td>
                         {{deadline}}
                     </td>
                     <td>
-                        {{done}}
+                        <div class="make-switch switch-small" data-on="default" data-off="default"
+                             data-on-label="Y" data-off-label="N">
+                            <input type="checkbox" {{test done}}>
+                        </div>
+                        <button type="button" class="close">&times;</button>
                     </td>
                 </tr>
                 {{/each}}
             </tbody>
         </table>
+        <ul class="pager">
+            <li id="messagePrevious" class="previous"><a href="#">&larr; {{prevText}}</a>
+            </li>
+            <li id="messageNext" class="next"><a href="#">{{nextText}} &rarr;</a>
+            </li>
+        </ul>
         <!-- Button trigger modal -->
-        <button id="messageModalbutton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-            Add New Message
-        </button>
-
+        <div style="float:right;">
+            <button id="messageModalbutton" class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+            </button>
+        </div>
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog" style="z-index:10">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
@@ -62,20 +71,20 @@
                     <form role="form" id="messageForm">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="NAME">
+                                <label class="control-label" for="name">Name</label>
+                                <input type="text" class="form-control checkValue" id="name" placeholder="NAME">
                             </div>
                             <div class="form-group">
-                                <label for="text">Message</label>
-                                <input type="text" class="form-control" id="text" placeholder="Message">
+                                <label class="control-label" for="text">Message</label>
+                                <input type="text" class="form-control checkValue" id="text" placeholder="Message">
                             </div>
-                            <div class="form-group">
-                                <label for="deadline">DeadLine</label>
-                                <input type="text" class="form-control" id="deadline" placeholder="YYYYMMDD">
+                            <div class="form-group" data-date-format="YYYY/MM/DD">
+                                <label class="control-label" for="deadline">DeadLine</label>
+                                <input type="text" class="form-control checkValue" id="deadline" placeholder="YYYY-MM-DD">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                            <button type="button" id="modalCloseButton" class="btn btn-warning" data-dismiss="modal">Close</button>
                             <button type="submit" value="Create" class="btn btn-primary">Submit</button>
                         </div>
                     </form>

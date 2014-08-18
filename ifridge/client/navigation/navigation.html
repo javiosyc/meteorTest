@@ -1,20 +1,31 @@
 <template name="navigation">
-    <div class="col-md-4 column">
-        <img src="logo.png">
-    </div>
-    <div class="col-md-5 column">
-        <div>
-            <ul class="nav nav-pills">
-                <li><a href="{{pathFor 'message'}}">Message<span class="glyphicon glyphicon-cog"></span></a>
-                </li>
-                <li><a href="{{pathFor 'about'}}">About</a>
-                </li>
-                <li><a href="{{pathFor 'setting'}}">Setting</a>
-                </li>
-            </ul>
+    <div class="nav-space"></div>
+    <div class="nav-box">
+        <div class="col-md-3 column">
+            <img src="logo.png">
+        </div>
+        <div class="col-md-6 column">
+            <div class="nav-img">
+                <a href="{{pathFor 'setting'}}">
+                    <img src="setting.png" alt="setting" />
+                </a>
+                <a href="{{pathFor 'message'}}">
+                    <img src="layout_design＿RE1-05.png" alt="setting" />
+                </a>
+                <a href="{{pathFor 'about'}}">
+                    <img src="layout_design＿RE1-06.png" alt="setting" />
+                </a>
+                <a href="{{pathFor 'about'}}">
+                    <img src="layout_design＿RE1-07.png" alt="setting" />
+                </a>
+                <a href="{{pathFor 'about'}}">
+                    <img src="layout_design＿RE1-08.png" alt="setting" />
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3 column">
+            <label id="time" class="time">13:50</label>
         </div>
     </div>
-    <div class="col-md-3 column">
-        <h2><label id="time">13:50</label></h2>
-    </div>
+    <div class="nav-space"></div>
 </template>

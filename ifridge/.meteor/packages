@@ -6,6 +6,8 @@
 standard-app-packages
 insecure
 jquery
-bootstrap-3
 blaze
 iron-router
+bootstrap-3
+bootstrap-datepicker2
+bootstrap-3-switch

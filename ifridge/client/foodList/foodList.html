@@ -1,23 +1,27 @@
 <template name="foodList">
-    <div class="col-md-3 column">
-        <input id="searchFood" type="text">
-        <button id="searchFoodButton">
-            <span class="glyphicon glyphicon-search"></span>
-        </button>
-
+    <div class="col-md-3 column foodList">
+        <div class="searchFood">
+            <input id="searchFood" type="text">
+            <button id="searchFoodButton">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </div>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th class="col-md-8">Food Name</th>
+                    <th class="col-md-8">Item</th>
                     <th class="col-md-4">.</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each FoodList}}
-                <tr class="{{color}}">
-                    <td>{{foodName}}</td>
+                <tr>
+                    <td>{{foodName}}
+                        <lable class="label label-{{color}}">{{colorText color}}</lable>
+                    </td>
                     <td>{{expirationDate}}
-                        <button class="close delete_item" type="button"><span id="{{_id}}" class="glyphicon glyphicon-trash"></span>
+
+                        <button class="close delete_item" type="button"><span class="glyphicon glyphicon-trash"></span>
                         </button>
                     </td>
                 </tr>
