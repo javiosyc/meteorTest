@@ -1,21 +1,20 @@
 Meteor.autorun(function() {
-    Meteor.subscribe("messageLists", Session.get("messageCursor")
-                    ,function() {
-                        $(".make-switch").bootstrapSwitch();
-                    }    
-                    );
+    Meteor.subscribe("messageLists", Session.get("messageCursor"), function() {
+        $(".make-switch").bootstrapSwitch();
+    });
 });
 Template.message.posts = function() {
-    return Posts.find(
-        {}, {sort: {createDate: -1}}
-    )
+    return Posts.find({}, {
+        sort: {
+            createDate: -1
+        }
+    })
 };
-
-
 Template.message.rendered = function() {
-    $('#deadline').datepicker({format: "yyyy-mm-dd"});    
+    $('#deadline').datepicker({
+        format: "yyyy-mm-dd"
+    });
 };
-
 Template.message.events({
     "submit #messageForm": insertMessage,
     "click #messagePrevious": function(event, template) {
@@ -29,18 +28,14 @@ Template.message.events({
     "click .close": function() {
         Posts.remove(this._id);
     },
-  
-    "switch-change" :function(e,data) {
-        var done = this.done;
-        var result;
-        if(done=="Y") {
-            result ="N";
-        } else {
-            result="Y";
-        }
-        Posts.update(this._id,{$set: {done: result}});
+    "switch-change": function(event) {
+        var value = $(event.target).bootstrapSwitch("status");
+        Posts.update(this._id, {
+            $set: {
+                done: value
+            }
+        });
     }
-   
 });
 Template.message.nextText = function() {
     var pageSize = Number(Session.get("pageSize"));
@@ -85,19 +80,17 @@ Template.message.messageColor = function() {
 Template.message.timeFormate = function(date) {
     var createDate = new Date(date);
     var now = new Date();
-   
     if(now.getDate() != createDate.getDate()) {
-        return padDigits(createDate.getMonth() + 1,2) + "/" + padDigits(createDate.getDate(), 2);
-    } else {   
+        return padDigits(createDate.getMonth() + 1, 2) + "/" + padDigits(createDate.getDate(), 2);
+    } else {
         return padDigits(createDate.getHours(), 2) + ":" + padDigits(createDate.getMinutes(), 2);
     }
 };
-
 Template.message.test = function(done) {
-    if(done=="Y") {
+    if(done == "Y") {
         return "checked";
-    } else{
-        return"";
+    } else {
+        return "";
     }
 }
 
@@ -121,12 +114,11 @@ function insertMessage(e) {
         $(e.target).find("[id=text]").val("");
         $(e.target).find("[id=deadline]").val("");
         $("#modalCloseButton").click();
-    }   
-    
+    }
 }
 
 function padDigits(number, digits) {
-    return 
+    return
     Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
 }
 
